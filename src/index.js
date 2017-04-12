@@ -1,10 +1,16 @@
 import * as PIXI from 'pixi'
-import DelayTicker from './DelayTicker'
+import DelayTicker from './components/DelayTicker'
+import AppModel from './AppModel'
+import AppView from './AppView'
+import AppController from './AppController'
 
 const app = new PIXI.Application(800, 600, { transparent: true })
 document.body.appendChild(app.view)
 
-// Delay ticker test 
+const model = new AppModel(),
+      view = new AppView(model),
+      ctrl = new AppController(model, view)
+
 
 let g1 = new PIXI.Graphics()
 let g2 = new PIXI.Graphics()
@@ -23,13 +29,10 @@ app.stage.addChild(g1, g2)
 
 
 
-const GravityFactor = 1
+app.ticker.add( delta => view.update(app.stage))
+//
+// const newShapeTicker = new DelayTicker(10, () => {
+//   g2.position.y +=10
+// })
 
-
-app.ticker.add( delta => g1.position.y += GravityFactor )
-
-const newShapeTicker = new DelayTicker(10, () => {
-  g2.position.y +=10
-})
-
-newShapeTicker.start()
+// newShapeTicker.start()
