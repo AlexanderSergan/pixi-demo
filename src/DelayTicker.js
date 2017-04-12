@@ -1,10 +1,12 @@
-
  /**
-  * @constructor Ticker class with delay in frames
-  * @param {number} time - time in ticker calls.
-  * @param {string} author - function to invoke.
+  * Ticker class with delay in frames
+  * @extends PIXI.ticker.Ticker
   */
   export default class DelayTicker extends PIXI.ticker.Ticker {
+    /**
+    * @param {number} time - time in ticker calls.
+    * @param {function} fn - function to invoke.
+    */
     constructor(time, fn) {
       super()
 
