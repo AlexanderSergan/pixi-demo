@@ -1,0 +1,32 @@
+{
+  "name": "pixi-demo",
+  "version": "0.0.0",
+  "description": "Pixi.js demo project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --module-bind"
+  },
+  "author": "AlexanderSergan",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-glslify": "^1.0.2",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-runtime": "^6.11.6",
+    "brfs": "^1.4.3",
+    "expose-loader": "^0.7.1",
+    "glslify": "^5.1.0",
+    "install": "^0.8.1",
+    "json-loader": "^0.5.4",
+    "npm": "^3.10.7",
+    "transform-loader": "^0.2.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  },
+  "dependencies": {
+    "pixi.js": "^4.1.0"
+  }
+}
