@@ -1,10 +1,13 @@
 import * as PIXI from 'pixi'
-import DelayTicker from './components/DelayTicker'
+
 import AppModel from './AppModel'
 import AppView from './AppView'
 import AppController from './AppController'
 
-const app = new PIXI.Application(800, 600, { transparent: true })
+import DelayTicker from './components/DelayTicker'
+import { val } from './components/Constants'
+
+const app = new PIXI.Application(val.APP_WIDTH, val.APP_HEIGHT, { transparent: true })
 document.body.appendChild(app.view)
 
 const model = new AppModel(),
