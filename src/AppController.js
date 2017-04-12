@@ -1,3 +1,4 @@
+import { val } from './components/Constants'
 /**
 * @constructor AppController class
 * @param {class} model - AppModel class.
@@ -7,16 +8,30 @@ export default class AppController {
     this.AppModel = AppModel
     this.AppView = AppView
 
-    this.AppView.gravityButtonClicked.sub((sender, args) => this.increaseGravityCtrl())
+    //subscribes
+    this.AppView.gravityButtonIncrClicked.sub((sender, args) => this.increaseGravity())
+    this.AppView.gravityButtonDecrClicked.sub((sender, args) => this.decreaseGravity())
+    this.AppView.shapesButtonIncrClicked.sub((sender, args) => this.addShapePerSec())
+    this.AppView.shapesButtonDecrClicked.sub((sender, args) => this.removeShapePerSec())
 
   }
 
-  increaseGravityCtrl() {
-    /**
-     *     validation and logic
-     */
+  increaseGravity() {
+    if (this.AppModel.gravityValue + val.GRAVITY_VALUE_STEP <= val.GRAVITY_VALUE_MAX)
+      this.AppModel.increaseGravity()
+  }
 
+  decreaseGravity() {
+    if (this.AppModel.gravityValue - val.GRAVITY_VALUE_STEP >= val.GRAVITY_VALUE_MIN )
+      this.AppModel.decreaseGravity()
+  }
 
-    this.AppModel.increaseGravity()
+  addShapePerSec() {
+    if (this.AppModel.shapesPerSec + val.SHAPES_PER_SEC_STEP <= val.SHAPES_PER_SEC_MAX)
+      this.AppModel.addShapePerSec()
+  }
+  removeShapePerSec() {
+    if (this.AppModel.shapesPerSec - val.SHAPES_PER_SEC_STEP >= val.SHAPES_PER_SEC_MIN)
+      this.AppModel.removeShapePerSec()
   }
 }
