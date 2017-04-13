@@ -20,12 +20,10 @@ export default class HitArea {
     hitArea.on('click', e => this.clickHandler(e, app))
 
     app.stage.addChildAt(hitArea, 0)
-    console.log('hitarea inited');
   }
 
   static clickHandler(e, app) {
 
-    console.log('asdf');
      var point = e.data.getLocalPosition(app.stage)
 
      app.stage.addChild(ShapeFactory.generateSprite(ShapeFactory.getRandomShape(), point.x, point.y))
