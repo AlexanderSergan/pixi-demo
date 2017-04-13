@@ -4,7 +4,9 @@ import { val } from './components/Constants'
 * @param {Object} data - data to initialize
 */
 export default class AppModel {
-  constructor(gravityValue = 2, shapesPerSec = 2) {
+  constructor(app, gravityValue = 2, shapesPerSec = 2) {
+
+    this.app = app
 
     this.gravityValue = gravityValue
     this.shapesPerSec = shapesPerSec
@@ -12,7 +14,6 @@ export default class AppModel {
     this.shapesCount = 0
 
   }
-
 
 
 

@@ -10,12 +10,17 @@
     constructor(time, fn) {
       super()
 
-      this.time = time
+      this.time = time.toFixed()
       this.fn = fn
       this.counter = 0
 
       this.add(d => this.updateCounter())
 
+    }
+
+    updateDelay(val) {
+      this.counter = 0
+      this.time = val.toFixed()
     }
 
     updateCounter(val = 1) {

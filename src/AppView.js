@@ -1,5 +1,6 @@
 import Observable from './components/Observable'
-import { cst, ui } from './components/Constants'
+import { val, ui } from './components/Constants'
+import DelayTicker from './components/DelayTicker'
 
 /**
 * AppView class
@@ -14,6 +15,7 @@ export default class AppViewClass {
     this.gravityButtonDecrClicked = new Observable(this)
     this.shapesButtonIncrClicked = new Observable(this)
     this.shapesButtonDecrClicked = new Observable(this)
+    this.addRandomShapeEvent = new Observable(this)
 
     // Subscriptions
     this.gravityButtonIncrClicked.sub((sender, args) => this.updateGravityLabel() )
@@ -48,6 +50,10 @@ export default class AppViewClass {
     this.shapesCountLabel = document.getElementById(ui.labels.shapesCount)
     this.shapesAreaLabel = document.getElementById(ui.labels.shapesArea)
 
+    this.newShapeTicker = new DelayTicker(60, ()=>{
+      this.addRandomShape()
+    })
+    this.newShapeTicker.start()
 
     this.initLabels()
   }
@@ -65,6 +71,7 @@ export default class AppViewClass {
 
   updateShapesPerSecLabel() {
     this.shapesPerSecLabel.textContent = `shapes per second: ${this.AppModel.shapesPerSec}`
+    this.newShapeTicker.updateDelay(60/this.AppModel.shapesPerSec)
   }
 
   updateShapesArea() {
@@ -76,6 +83,10 @@ export default class AppViewClass {
   }
 
 
+  addRandomShape() {
+    this.addRandomShapeEvent.fire()
+
+  }
 
 
 
@@ -86,6 +97,6 @@ export default class AppViewClass {
    * @param  {Object} stage to update
    */
   update(stage) {
-    stage.children.map(child => child.position.y > 600 ? child.destroy() : child.position.y += this.AppModel.gravityValue)
+    stage.children.map(child => child.position.y > val.APP_HEIGHT+child.height/2 ? child.destroy() : child.position.y += this.AppModel.gravityValue)
   }
 }
