@@ -7,7 +7,7 @@ import AppController from './AppController'
 import { val } from './components/Constants'
 
 const app = new PIXI.Application(val.APP_WIDTH, val.APP_HEIGHT, { transparent: true })
-document.body.appendChild(app.view)
+document.getElementById('render-target').appendChild(app.view)
 
 const model = new AppModel(app),
       view = new AppView(model),

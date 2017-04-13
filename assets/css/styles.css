@@ -1,0 +1,22 @@
+div.navbar.navbar-default {
+  background-image:none !important;
+  padding:0px 20px;
+}
+
+div.container-fluid {
+  padding:0 0;
+}
+
+div.navbar-default .navbar-nav li.active a {
+  background-image:none !important;
+}
+
+div.btn-group {
+  right: 40px;
+  position: absolute;
+  top: 10px;
+}
+
+.btn-group .btn {
+    margin-right: 10px;
+  }

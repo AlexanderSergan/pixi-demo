@@ -77,20 +77,20 @@ export default class AppViewClass {
   }
 
   updateGravityLabel() {
-    this.gravityLabel.textContent = `gravity value is: ${this.AppModel.gravityValue}`
+    this.gravityLabel.textContent = `Gravity value: ${this.AppModel.gravityValue}`
   }
 
   updateShapesPerSecLabel() {
-    this.shapesPerSecLabel.textContent = `shapes per second: ${this.AppModel.shapesPerSec}`
+    this.shapesPerSecLabel.textContent = `Shapes per second: ${this.AppModel.shapesPerSec}`
     this.newShapeTicker.updateDelay(60/this.AppModel.shapesPerSec)
   }
 
   updateShapesArea() {
-    this.shapesAreaLabel.textContent = `shapes area: ${this.AppModel.shapesArea}px`
+    this.shapesAreaLabel.textContent = `Shapes area: ${this.AppModel.shapesArea}px`
   }
 
   updateShapesCount() {
-    this.shapesCountLabel.textContent = `shapes count: ${this.AppModel.shapesCount}`
+    this.shapesCountLabel.textContent = `Shapes count: ${this.AppModel.shapesCount}`
   }
 
 
