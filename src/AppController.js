@@ -1,5 +1,6 @@
 import { val } from './components/Constants'
 import ShapeFactory from './components/ShapeFactory'
+import Utils from './utils/Utils'
 /**
 * @constructor AppController class
 * @param {class} model - AppModel class.
@@ -18,13 +19,13 @@ export default class AppController {
 
     this.AppView.addRandomShapeEvent.sub((sender, args) => this.addGeneratedShape())
 
+    this.AppView.updateLabelsEvent.sub((sender, args) => this.updateShapesArea())
+    this.AppView.updateLabelsEvent.sub((sender, args) => this.updateShapesCount())
+
   }
 
 
   addGeneratedShape() {
-
-
-
     this.AppModel.app.stage.addChild(
       this.addClickListener(
         ShapeFactory.generateSprite(ShapeFactory.getRandomShape())
@@ -32,6 +33,13 @@ export default class AppController {
     )
   }
 
+  updateShapesCount() {
+    this.AppModel.shapesCount = this.AppModel.app.stage.children.length -1
+  }
+
+  updateShapesArea() {
+    this.AppModel.shapesArea = Utils.getAlphaArea(this.AppModel.app.renderer, this.AppModel.app.stage)
+  }
 
   increaseGravity() {
     if (this.AppModel.gravityValue + val.GRAVITY_VALUE_STEP <= val.GRAVITY_VALUE_MAX)

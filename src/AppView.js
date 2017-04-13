@@ -19,12 +19,15 @@ export default class AppViewClass {
     this.shapesButtonIncrClicked = new Observable(this)
     this.shapesButtonDecrClicked = new Observable(this)
     this.addRandomShapeEvent = new Observable(this)
+    this.updateLabelsEvent = new Observable(this)
 
     // Subscriptions
     this.gravityButtonIncrClicked.sub((sender, args) => this.updateGravityLabel() )
     this.gravityButtonDecrClicked.sub((sender, args) => this.updateGravityLabel() )
     this.shapesButtonIncrClicked.sub((sender, args) => this.updateShapesPerSecLabel() )
     this.shapesButtonDecrClicked.sub((sender, args) => this.updateShapesPerSecLabel() )
+    this.updateLabelsEvent.sub((sender, args) => this.updateShapesArea())
+    this.updateLabelsEvent.sub((sender, args) => this.updateShapesCount())
 
 
     //Html elements & events
@@ -57,6 +60,11 @@ export default class AppViewClass {
       this.addRandomShape()
     })
     this.newShapeTicker.start()
+
+    this.labelsUpdateTicker = new DelayTicker(30, ()=> {
+      this.updateLabelsEvent.fire()
+    })
+    this.labelsUpdateTicker.start()
 
     this.initLabels()
   }
@@ -101,11 +109,9 @@ export default class AppViewClass {
    */
   update(stage) {
     stage.children.map((child, i) => {
-      if (i !== 0) {
+      if (i !== 0)
        child.position.y > val.APP_HEIGHT+child.height/2 ? child.destroy() : child.position.y += this.AppModel.gravityValue
-      }
-    }
-    )
+    })
 
   }
 }
