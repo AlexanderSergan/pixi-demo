@@ -1,6 +1,7 @@
 import Observable from './components/Observable'
 import { val, ui } from './components/Constants'
 import DelayTicker from './components/DelayTicker'
+import HitArea from './components/HitArea'
 
 /**
 * AppView class
@@ -9,6 +10,8 @@ import DelayTicker from './components/DelayTicker'
 export default class AppViewClass {
   constructor(AppModel) {
     this.AppModel = AppModel
+
+    HitArea.initHitArea(this.AppModel.app)
 
     //Observer Events
     this.gravityButtonIncrClicked = new Observable(this)
@@ -97,6 +100,12 @@ export default class AppViewClass {
    * @param  {Object} stage to update
    */
   update(stage) {
-    stage.children.map(child => child.position.y > val.APP_HEIGHT+child.height/2 ? child.destroy() : child.position.y += this.AppModel.gravityValue)
+    stage.children.map((child, i) => {
+      if (i !== 0) {
+       child.position.y > val.APP_HEIGHT+child.height/2 ? child.destroy() : child.position.y += this.AppModel.gravityValue
+      }
+    }
+    )
+
   }
 }
