@@ -22,11 +22,14 @@ export default class AppController {
 
 
   addGeneratedShape() {
+
+
+
     this.AppModel.app.stage.addChild(
-      ShapeFactory.generateSprite(
-        ShapeFactory.getRandomShape()
+      this.addClickListener(
+        ShapeFactory.generateSprite(ShapeFactory.getRandomShape())
+      )
     )
-  )
   }
 
 
@@ -47,5 +50,29 @@ export default class AppController {
   removeShapePerSec() {
     if (this.AppModel.shapesPerSec - val.SHAPES_PER_SEC_STEP >= val.SHAPES_PER_SEC_MIN)
       this.AppModel.removeShapePerSec()
+  }
+
+  addClickListener(sprite) {
+    sprite.on('click', e=> {
+
+      let colorMatrix = new PIXI.filters.ColorMatrixFilter();
+
+      this.AppModel.app.stage.children.map(child => {
+        if (child.shapeType == sprite.shapeType) {
+
+            if (!child.filters){
+              child.filters = [colorMatrix]
+              colorMatrix.kodachrome(true)
+            } else {
+              child.filters = []
+            }
+        }
+
+      })
+
+      sprite.destroy()
+      })
+      return sprite
+
   }
 }
