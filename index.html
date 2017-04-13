@@ -1,26 +1,85 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-      <div class="ui">
-        <button type="button" id="gravity-incr">+</button>
-        <button type="button" id="gravity-decr">-</button>
-        <h3 id="gravity-label"></h3>
-      </div>
-    <body>
-      <div class="ui">
-        <button type="button" id="shapes-incr">+</button>
-        <button type="button" id="shapes-decr">-</button>
-        <h3 id="shapes-persec"></h3>
-      </div>
-      <div class="ui">
-        <h3 id="shapes-count"></h3>
-      </div>
-      <div class="ui">
-        <h3 id="shapes-area"></h3>
-      </div>
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.1.0/pixi.js"></script> -->
-        <script type="text/javascript" src="./build/bundle.js" charset="utf-8"></script>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forge</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="assets/css/bootstrap-material-design.css">
+    <link rel="stylesheet" href="assets/css/ripples.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+      <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jumbotron" style="max-width: 850px; margin-top: 60px;">
+                      <h2>PIXI.js demo</h2>
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="ui">
+                            <h3 id="shapes-count"></h3>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="ui">
+                            <h3 id="shapes-area"></h3>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div id="render-target">
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+                              <h3 style="max-width: 50%"id="gravity-label"></h3>
+                              <div class="btn-group">
+
+                                <div class="btn btn-md btn-default" id="gravity-incr">+</div>
+                                <div class="btn btn-md btn-default" id="gravity-decr">-</div>
+                              </div>
+
+                        </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <h3 style="max-width: 50%"id="shapes-persec"></h3>
+                                <div class="btn-group">
+
+                                  <div class="btn btn-md btn-default" id="shapes-incr">+</div>
+                                  <div class="btn btn-md btn-default" id="shapes-decr">-</div>
+                                </div>
+                           </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/init.js"></script>
+    <script src="assets/js/material.js"></script>
+    <script src="assets/js/ripples.js"></script>
+    <script type="text/javascript" src="./build/bundle.js" charset="utf-8"></script>
+</body>
+
 </html>
