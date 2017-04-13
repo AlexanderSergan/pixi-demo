@@ -11,7 +11,14 @@ class Values {
     this.SHAPES_PER_SEC_DEFAULT = 2
     this.SHAPES_PER_SEC_STEP = 1
     this.SHAPES_PER_SEC_MAX = 50
-    this.SHAPES_PER_SEC_MIN = 0
+    this.SHAPES_PER_SEC_MIN = 1
+
+    this.SHAPE_TYPES = [
+      'CIRCLE',
+      'ELLIPSE',
+      'POLY',
+      'CURVE'
+    ]
 
   }
 

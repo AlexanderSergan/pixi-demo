@@ -1,7 +1,9 @@
 import { val } from './components/Constants'
+import ShapeFactory from './components/ShapeFactory'
 /**
 * @constructor AppController class
 * @param {class} model - AppModel class.
+* @param {class} view - AppView class.
 */
 export default class AppController {
   constructor(AppModel, AppView) {
@@ -14,7 +16,19 @@ export default class AppController {
     this.AppView.shapesButtonIncrClicked.sub((sender, args) => this.addShapePerSec())
     this.AppView.shapesButtonDecrClicked.sub((sender, args) => this.removeShapePerSec())
 
+    this.AppView.addRandomShapeEvent.sub((sender, args) => this.addGeneratedShape())
+
   }
+
+
+  addGeneratedShape() {
+    this.AppModel.app.stage.addChild(
+      ShapeFactory.generateSprite(
+        ShapeFactory.getRandomShape()
+    )
+  )
+  }
+
 
   increaseGravity() {
     if (this.AppModel.gravityValue + val.GRAVITY_VALUE_STEP <= val.GRAVITY_VALUE_MAX)
