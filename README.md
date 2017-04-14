@@ -2,7 +2,7 @@
 
 Development
 ```sh
-$ git clone https://github.com/SamirL/pixijs-webpack-starter.git
+$ git clone https://github.com/AlexanderSergan/pixi-demo
 $ npm install
 $ npm run dev
 ```
